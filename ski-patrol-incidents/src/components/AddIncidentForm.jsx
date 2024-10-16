@@ -9,7 +9,7 @@ import {
   Snackbar,
 } from '@mui/material';
 
-function AddIncidentForm() {
+export default function AddIncidentForm() {
   const [formData, setFormData] = useState({
     date: '',
     type: '',
@@ -100,5 +100,3 @@ function AddIncidentForm() {
     </Container>
   );
 }
-
-export default AddIncidentForm;
