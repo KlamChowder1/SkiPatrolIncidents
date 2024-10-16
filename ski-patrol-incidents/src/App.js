@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import AddIncidentForm from './components/AddIncidentForm';
+import IncidentList from './components/IncidentList';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Box sx={{ mt: 2 }}>
         <Routes>
           <Route path="/add-incident" element={<AddIncidentForm />} />
+          <Route path="/incidents" element={<IncidentList />} />
         </Routes>
       </Box>
     </Router>

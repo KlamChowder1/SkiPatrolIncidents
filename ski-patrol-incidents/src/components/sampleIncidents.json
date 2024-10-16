@@ -1,0 +1,103 @@
+{
+    "incidents": [
+      {
+        "datetime": "2024-10-01T14:30:00",
+        "type_of_incident": "Collision",
+        "ski_run": "Blue Diamond",
+        "ski_run_difficulty": "Intermediate",
+        "skier_level": "Intermediate",
+        "skier_age_group": "Adult",
+        "description": "Two skiers collided while going downhill."
+      },
+      {
+        "datetime": "2024-10-02T10:15:00",
+        "type_of_incident": "Fall",
+        "ski_run": "Green Meadow",
+        "ski_run_difficulty": "Beginner",
+        "skier_level": "Beginner",
+        "skier_age_group": "Child",
+        "description": "A child fell while attempting to stop."
+      },
+      {
+        "datetime": "2024-10-02T12:45:00",
+        "type_of_incident": "Equipment Failure",
+        "ski_run": "Red Ridge",
+        "ski_run_difficulty": "Advanced",
+        "skier_level": "Expert",
+        "skier_age_group": "Adult",
+        "description": "Skier's binding malfunctioned, causing a fall."
+      },
+      {
+        "datetime": "2024-10-03T09:00:00",
+        "type_of_incident": "Collision",
+        "ski_run": "Black Diamond",
+        "ski_run_difficulty": "Expert",
+        "skier_level": "Expert",
+        "skier_age_group": "Senior",
+        "description": "Two advanced skiers collided during a race."
+      },
+      {
+        "datetime": "2024-10-03T16:30:00",
+        "type_of_incident": "Fall",
+        "ski_run": "Sunny Slopes",
+        "ski_run_difficulty": "Intermediate",
+        "skier_level": "Intermediate",
+        "skier_age_group": "Adult",
+        "description": "Skier fell due to uneven terrain."
+      },
+      {
+        "datetime": "2024-10-04T11:20:00",
+        "type_of_incident": "Injury",
+        "ski_run": "Steep Drop",
+        "ski_run_difficulty": "Advanced",
+        "skier_level": "Intermediate",
+        "skier_age_group": "Teen",
+        "description": "Skier injured their ankle after a jump."
+      },
+      {
+        "datetime": "2024-10-04T14:00:00",
+        "type_of_incident": "Collision",
+        "ski_run": "Gentle Valley",
+        "ski_run_difficulty": "Beginner",
+        "skier_level": "Beginner",
+        "skier_age_group": "Child",
+        "description": "A beginner collided with a snowman."
+      },
+      {
+        "datetime": "2024-10-05T08:45:00",
+        "type_of_incident": "Fall",
+        "ski_run": "Rocky Path",
+        "ski_run_difficulty": "Advanced",
+        "skier_level": "Expert",
+        "skier_age_group": "Adult",
+        "description": "Expert skier fell after hitting a rock."
+      },
+      {
+        "datetime": "2024-10-05T15:30:00",
+        "type_of_incident": "Equipment Failure",
+        "ski_run": "Misty Woods",
+        "ski_run_difficulty": "Intermediate",
+        "skier_level": "Advanced",
+        "skier_age_group": "Senior",
+        "description": "A ski pole broke while navigating through trees."
+      },
+      {
+        "datetime": "2024-10-06T09:30:00",
+        "type_of_incident": "Injury",
+        "ski_run": "Crystal Peak",
+        "ski_run_difficulty": "Expert",
+        "skier_level": "Intermediate",
+        "skier_age_group": "Adult",
+        "description": "Skier suffered a shoulder injury during a fall."
+      },
+      {
+        "datetime": "2024-10-06T13:00:00",
+        "type_of_incident": "Collision",
+        "ski_run": "Winter Wonderland",
+        "ski_run_difficulty": "Beginner",
+        "skier_level": "Beginner",
+        "skier_age_group": "Child",
+        "description": "Two children collided while playing in the snow."
+      }
+    ]
+  }
