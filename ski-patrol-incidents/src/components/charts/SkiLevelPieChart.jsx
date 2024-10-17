@@ -59,7 +59,7 @@ export default function SkiLevelPieChart() {
   return (
     <>
       <Typography variant="h6" align="center" gutterBottom>
-        Incidents by Skier Level
+        Incidents by Ski Run Difficulty
       </Typography>
       <ResponsiveContainer width="100%" height={400}>
         <PieChart>
