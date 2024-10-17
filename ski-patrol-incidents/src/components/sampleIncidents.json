@@ -1,0 +1,92 @@
+{
+  "incidents": [
+    {
+      "datetime": "2024-10-01T14:30:00",
+      "type_of_incident": "Collision",
+      "ski_run": "Fork",
+      "ski_run_difficulty": "Blue",
+      "skier_age": 30,
+      "description": "Two skiers collided while going downhill."
+    },
+    {
+      "datetime": "2024-10-02T10:15:00",
+      "type_of_incident": "Fall",
+      "ski_run": "Collins",
+      "ski_run_difficulty": "Green",
+      "skier_age": 10,
+      "description": "A child fell while attempting to stop."
+    },
+    {
+      "datetime": "2024-10-02T12:45:00",
+      "type_of_incident": "Equipment Failure",
+     "ski_run": "Collins",
+      "ski_run_difficulty": "Green",
+      "skier_age": 28,
+      "description": "Skier's binding malfunctioned, causing a fall."
+    },
+    {
+      "datetime": "2024-10-03T09:00:00",
+      "type_of_incident": "Collision",
+      "ski_run": "Rainbow",
+      "ski_run_difficulty": "Black Diamond",
+      "skier_age": 35,
+      "description": "Two expert skiers collided during a race."
+    },
+    {
+      "datetime": "2024-10-03T16:30:00",
+      "type_of_incident": "Fall",
+      "ski_run": "Fork",
+      "ski_run_difficulty": "Blue",
+      "skier_age": 27,
+      "description": "Skier fell due to uneven terrain."
+    },
+    {
+      "datetime": "2024-10-04T11:20:00",
+      "type_of_incident": "Injury",
+      "ski_run": "Collins",
+      "ski_run_difficulty": "Green",
+      "skier_age": 17,
+      "description": "Skier injured their ankle after a jump."
+    },
+    {
+      "datetime": "2024-10-04T14:00:00",
+      "type_of_incident": "Collision",
+      "ski_run": "Collins",
+      "ski_run_difficulty": "Green",
+      "skier_age": 8,
+      "description": "A child collided with a snowman."
+    },
+    {
+      "datetime": "2024-10-05T08:45:00",
+      "type_of_incident": "Fall",
+      "ski_run": "Collins",
+      "ski_run_difficulty": "Green",
+      "skier_age": 33,
+      "description": "Beginner skier fell after hitting a rock."
+    },
+    {
+      "datetime": "2024-10-05T15:30:00",
+      "type_of_incident": "Equipment Failure",
+      "ski_run": "Fork",
+      "ski_run_difficulty": "Blue",
+      "skier_age": 60,
+      "description": "A ski pole broke while navigating through trees."
+    },
+    {
+      "datetime": "2024-10-06T09:30:00",
+      "type_of_incident": "Injury",
+      "ski_run": "Crystal Peak",
+      "ski_run_difficulty": "Black Diamond",
+      "skier_age": 29,
+      "description": "Skier suffered a shoulder injury during a fall."
+    },
+    {
+      "datetime": "2024-10-06T13:00:00",
+      "type_of_incident": "Collision",
+      "ski_run": "Collins",
+      "ski_run_difficulty": "Green",
+      "skier_age": 9,
+      "description": "Two children collided while playing in the snow."
+    }
+  ]
+}
