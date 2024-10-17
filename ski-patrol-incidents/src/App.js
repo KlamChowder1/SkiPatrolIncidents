@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import AddIncidentForm from './components/AddIncidentForm';
 import IncidentList from './components/IncidentList';
+import IncidentCharts from './components/IncidentCharts';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Routes>
           <Route path="/add-incident" element={<AddIncidentForm />} />
           <Route path="/incidents" element={<IncidentList />} />
+          <Route path="/charts" element={<IncidentCharts />} />
         </Routes>
       </Box>
     </Router>

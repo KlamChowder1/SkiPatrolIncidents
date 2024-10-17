@@ -40,7 +40,7 @@ export default function AddIncidentForm() {
             label="Date"
             type="date"
             name="date"
-            value={formData.date || ''}
+            value={formData.date}
             onChange={handleChange}
             fullWidth
             InputLabelProps={{ shrink: true }}

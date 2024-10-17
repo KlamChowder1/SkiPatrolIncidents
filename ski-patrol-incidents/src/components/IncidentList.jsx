@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Card, CardContent, Typography } from '@mui/material';
+
 import incidentsData from './sampleIncidents.json';
 
 const IncidentList = () => {
