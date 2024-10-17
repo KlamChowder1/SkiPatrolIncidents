@@ -19,8 +19,8 @@
     {
       "datetime": "2024-10-02T12:45:00",
       "type_of_incident": "Equipment Failure",
-      "ski_run": "Rainbow",
-      "ski_run_difficulty": "Black Diamond",
+     "ski_run": "Collins",
+      "ski_run_difficulty": "Green",
       "skier_age": 28,
       "description": "Skier's binding malfunctioned, causing a fall."
     },
@@ -30,7 +30,7 @@
       "ski_run": "Rainbow",
       "ski_run_difficulty": "Black Diamond",
       "skier_age": 35,
-      "description": "Two Black Diamond skiers collided during a race."
+      "description": "Two expert skiers collided during a race."
     },
     {
       "datetime": "2024-10-03T16:30:00",
@@ -43,31 +43,31 @@
     {
       "datetime": "2024-10-04T11:20:00",
       "type_of_incident": "Injury",
-      "ski_run": "Scary Run",
-      "ski_run_difficulty": "Black Diamond",
+      "ski_run": "Collins",
+      "ski_run_difficulty": "Green",
       "skier_age": 17,
       "description": "Skier injured their ankle after a jump."
     },
     {
       "datetime": "2024-10-04T14:00:00",
       "type_of_incident": "Collision",
-      "ski_run": "Gentle Valley",
-      "ski_run_difficulty": "Collins",
+      "ski_run": "Collins",
+      "ski_run_difficulty": "Green",
       "skier_age": 8,
-      "description": "A Green collided with a snowman."
+      "description": "A child collided with a snowman."
     },
     {
       "datetime": "2024-10-05T08:45:00",
       "type_of_incident": "Fall",
-      "ski_run": "Rocky Path",
-      "ski_run_difficulty": "Black Diamond",
+      "ski_run": "Collins",
+      "ski_run_difficulty": "Green",
       "skier_age": 33,
-      "description": "Expert skier fell after hitting a rock."
+      "description": "Beginner skier fell after hitting a rock."
     },
     {
       "datetime": "2024-10-05T15:30:00",
       "type_of_incident": "Equipment Failure",
-      "ski_run": "",
+      "ski_run": "Fork",
       "ski_run_difficulty": "Blue",
       "skier_age": 60,
       "description": "A ski pole broke while navigating through trees."

@@ -8,15 +8,15 @@ import {
 
 export default function IncidentCharts() {
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="xl" sx={{ paddingTop: 8 }}>
       <Grid container spacing={2} alignItems="center" justifyContent="center">
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid item sm={12} md={6} lg={4}>
           <IncidentTimeLineChart />
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid item sm={12} md={6} lg={4}>
           <SkiRunDifficultyPieChart />
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid item sm={12} md={6} lg={4}>
           <SkierAgeRangeBarChart />
         </Grid>
       </Grid>

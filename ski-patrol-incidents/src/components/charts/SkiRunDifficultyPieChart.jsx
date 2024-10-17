@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 import sampleIncidents from '../sampleIncidents.json';
 
-const COLOURS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const COLOURS = ['#000080', '#008000', '#000000'];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
@@ -70,7 +70,6 @@ export default function SkiRunDifficultyPieChart() {
             cx="50%"
             cy="50%"
             outerRadius={150}
-            fill="#8884d8"
             label={renderCustomizedLabel}
             labelLine={false}
           >
