@@ -1,4 +1,5 @@
 import React from 'react';
+import { Typography } from '@mui/material';
 import {
   BarChart,
   Bar,
@@ -21,7 +22,7 @@ const ageRanges = [
   { name: '65+', min: 65, max: 100 },
 ];
 
-export default function SkierAgeLineChart() {
+export default function SkierAgeRangeBarChart() {
   const ageCounts = ageRanges.map((range) => ({
     name: range.name,
     count: 0,
@@ -41,15 +42,20 @@ export default function SkierAgeLineChart() {
   });
 
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <BarChart data={ageCounts}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="count" fill="#8884d8" />
-      </BarChart>
-    </ResponsiveContainer>
+    <>
+      <Typography variant="h6" align="center" gutterBottom>
+        Incidents by Age Group
+      </Typography>
+      <ResponsiveContainer width="100%" height={400}>
+        <BarChart data={ageCounts}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="count" fill="#8884d8" />
+        </BarChart>
+      </ResponsiveContainer>
+    </>
   );
 }
