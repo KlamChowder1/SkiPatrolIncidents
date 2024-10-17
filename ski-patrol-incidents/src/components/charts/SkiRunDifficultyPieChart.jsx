@@ -1,4 +1,5 @@
 import React from 'react';
+import { Typography } from '@mui/material';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 import sampleIncidents from '../sampleIncidents.json';
 
@@ -31,7 +32,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-export default function SkiRunBarChart() {
+export default function SkiRunDifficultyPieChart() {
   // pie chart data looks like this: https://recharts.org/en-US/examples/PieChartWithCustomizedLabel
   // const data = [
   //     { name: 'Group A', value: 400 },
@@ -57,6 +58,9 @@ export default function SkiRunBarChart() {
 
   return (
     <>
+      <Typography variant="h6" align="center" gutterBottom>
+        Incidents by Ski Run Difficulty
+      </Typography>
       <ResponsiveContainer width="100%" height={400}>
         <PieChart>
           <Pie
