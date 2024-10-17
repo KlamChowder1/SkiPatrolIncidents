@@ -1,85 +1,55 @@
 import React from 'react';
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts';
 import sampleIncidents from '../sampleIncidents.json';
 
-const COLOURS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
-
-const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({
-  cx,
-  cy,
-  midAngle,
-  innerRadius,
-  outerRadius,
-  percent,
-  index,
-}) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-  return (
-    <text
-      x={x}
-      y={y}
-      fill="white"
-      textAnchor={x > cx ? 'start' : 'end'}
-      dominantBaseline="central"
-    >
-      {`${(percent * 100).toFixed(0)}%`}
-    </text>
-  );
-};
+const ageRanges = [
+  { name: '0-18', min: 0, max: 18 },
+  { name: '18-24', min: 18, max: 24 },
+  { name: '25-34', min: 25, max: 34 },
+  { name: '35-44', min: 35, max: 44 },
+  { name: '45-54', min: 45, max: 54 },
+  { name: '55-64', min: 55, max: 64 },
+  { name: '65+', min: 65, max: 100 },
+];
 
 export default function SkierAgeLineChart() {
-  // pie chart data looks like this: https://recharts.org/en-US/examples/PieChartWithCustomizedLabel
-  // const data = [
-  //     { name: 'Group A', value: 400 },
-  //     { name: 'Group B', value: 300 },
-  //     { name: 'Group C', value: 300 },
-  //     { name: 'Group D', value: 200 },
-  //   ];
-
-  const difficultyCounts = sampleIncidents.incidents.reduce((acc, incident) => {
-    acc[incident.ski_run_difficulty] =
-      (acc[incident.ski_run_difficulty] || 0) + 1;
-    return acc;
-  }, {});
-
-  console.log(difficultyCounts);
-
-  const data = Object.keys(difficultyCounts).map((difficulty) => ({
-    name: difficulty,
-    value: difficultyCounts[difficulty],
+  const ageCounts = ageRanges.map((range) => ({
+    name: range.name,
+    count: 0,
   }));
 
-  console.log(data);
+  sampleIncidents.incidents.forEach((incident) => {
+    const age = incident.skier_age;
+    // have to find the age that fits in the age range
+    const range = ageRanges.find((r) => age >= r.min && age <= r.max);
+    if (range) {
+      const index = ageCounts.findIndex((r) => r.name === range.name);
+      if (index !== -1) {
+        // increment the count of the ageCounts if age is within that range
+        ageCounts[index].count += 1;
+      }
+    }
+  });
 
   return (
-    <>
-      <ResponsiveContainer width="100%" height={400}>
-        <PieChart>
-          <Pie
-            data={data}
-            dataKey="value"
-            nameKey="name"
-            cx="50%"
-            cy="50%"
-            outerRadius={150}
-            fill="#8884d8"
-            label={renderCustomizedLabel}
-            labelLine={false}
-          >
-            {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLOURS[index % COLOURS.length]}
-              />
-            ))}
-          </Pie>
-          <Tooltip />
-        </PieChart>
-      </ResponsiveContainer>
-    </>
+    <ResponsiveContainer width="100%" height={400}>
+      <BarChart data={ageCounts}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="count" fill="#8884d8" />
+      </BarChart>
+    </ResponsiveContainer>
   );
 }
