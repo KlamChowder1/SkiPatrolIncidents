@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, Card, CardContent, Typography } from '@mui/material';
 
-import incidentsData from './sampleIncidents.json';
-
 const IncidentList = () => {
-  const incidents = incidentsData.incidents;
+  const [incidents, setIncidents] = useState([]);
+
+  useEffect(() => {
+    const fetchIncidents = async () => {
+      const response = await fetch('/api/incidents');
+      const json = await response.json();
+      console.log(json);
+
+      if (response.ok) {
+        setIncidents(json);
+      }
+    };
+
+    fetchIncidents();
+  }, []);
+
   return (
     <Grid container spacing={2} style={{ padding: '20px' }}>
       {incidents.map((incident, index) => (
@@ -15,7 +28,7 @@ const IncidentList = () => {
                 {incident.datetime} - {incident.type_of_incident}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Ski Run: {incident.ski_run}
+                Ski Run: {incident.ski_run.name}
               </Typography>
               <Typography variant="body2">{incident.description}</Typography>
             </CardContent>
