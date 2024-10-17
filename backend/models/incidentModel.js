@@ -19,7 +19,7 @@ const incidentSchema = new Schema({
     },
     difficulty: {
       type: String,
-      enum: ['Green', 'Blue', 'Black', 'Double Black'],
+      enum: ['Green', 'Blue', 'Black Diamond'],
       required: true,
     },
   },

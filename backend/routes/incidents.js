@@ -1,31 +1,17 @@
 const express = require('express');
-const Incident = require('../models/incidentModel');
+const {
+  createIncident,
+  getIncidents,
+} = require('../controllers/incidentController');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.json({ msg: 'GETTING ALL INCIDENTS' });
-});
+// GET all incidents
+router.get('/', getIncidents);
 
-router.post('/', async (req, res) => {
-  const { datetime, type_of_incident, ski_run, skier_age, description } =
-    req.body;
+// CREATE incident
+router.post('/', createIncident);
 
-  try {
-    const incident = await Incident.create({
-      datetime,
-      type_of_incident,
-      ski_run: {
-        name: ski_run.name,
-        difficulty: ski_run.difficulty,
-      },
-      skier_age,
-      description,
-    });
-    res.status(200).json(incident);
-  } catch (e) {
-    res.json({ e: 'Failed to POST a new incident' });
-  }
-});
+// don't need Update or Delete incidents because reported incidents should not be modified
 
 module.exports = router;
