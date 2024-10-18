@@ -8,9 +8,11 @@ import {
   CircularProgress,
 } from '@mui/material';
 import { useIncidents } from '../hooks/useIncident';
+import { useSnackbar } from '../hooks/useSnackbar';
 
 const IncidentList = () => {
   const { incidents, loading, error } = useIncidents();
+  const { showSnackbar } = useSnackbar();
 
   const [groupedIncidents, setGroupedIncidents] = useState({});
 
@@ -18,6 +20,12 @@ const IncidentList = () => {
     const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
+
+  useEffect(() => {
+    if (error) {
+      showSnackbar(error, 'Could not load incidents');
+    }
+  }, [error, showSnackbar]);
 
   useEffect(() => {
     const fetchIncidents = async () => {
