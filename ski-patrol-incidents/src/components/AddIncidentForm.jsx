@@ -69,10 +69,10 @@ export default function AddIncidentForm() {
         });
         showSnackbar('Incident submitted successfully!', 'success');
       } else {
-        showSnackbar('Failed to submit the incident!', 'error');
+        showSnackbar('Failed to submit the incident', 'error');
       }
     } catch (e) {
-      showSnackbar('Failed to submit the incident!', 'error');
+      showSnackbar('Failed to submit the incident', 'error');
     }
   };
 
@@ -93,6 +93,7 @@ export default function AddIncidentForm() {
         <Typography variant="h4" gutterBottom>
           Add Ski Incident
         </Typography>
+        {/* TODO: should try out useForm() hook */}
         <form onSubmit={handleSubmit}>
           <FormControl fullWidth>
             <TextField
@@ -146,6 +147,12 @@ export default function AddIncidentForm() {
               fullWidth
               margin="normal"
               required
+              InputProps={{
+                inputProps: {
+                  min: 0,
+                  max: 100,
+                },
+              }}
             />
             <TextField
               label="Description"

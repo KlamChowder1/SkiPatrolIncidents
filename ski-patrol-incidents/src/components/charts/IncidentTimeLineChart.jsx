@@ -23,10 +23,13 @@ const IncidentOverTimeLineChart = ({ incidents }) => {
 
   // console.log(incidentsByDate);
 
-  const chartData = Object.keys(incidentsByDate).map((date) => ({
-    date,
-    count: incidentsByDate[date],
-  }));
+  // need to sort the chartData by date otherwise the x axis gets messed up
+  const chartData = Object.keys(incidentsByDate)
+    .map((date) => ({
+      date,
+      count: incidentsByDate[date],
+    }))
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   return (
     <>
@@ -36,19 +39,17 @@ const IncidentOverTimeLineChart = ({ incidents }) => {
       <ResponsiveContainer width="100%" height={400}>
         <LineChart
           data={chartData}
-          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+          margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date">
-            <Label offset={70}>Date</Label>
-          </XAxis>
-          <YAxis>
-            <Label angle={270} position="left" style={{ textAnchor: 'middle' }}>
-              Counts
-            </Label>
-          </YAxis>
+          <XAxis dataKey="date" label={{ value: 'Date', position: 'bottom' }} />
+          <YAxis
+            label={{
+              value: '# of Incidents',
+              angle: -90,
+            }}
+          />
           <Tooltip />
-          <Label YAxis="Test" XAxis="blah" />
           <Line type="monotone" dataKey="count" stroke="#8884d8" label="test" />
         </LineChart>
       </ResponsiveContainer>

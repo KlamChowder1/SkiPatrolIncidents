@@ -1,8 +1,19 @@
 import React from 'react';
 import { Typography } from '@mui/material';
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  ResponsiveContainer,
+  Legend,
+} from 'recharts';
 
-const COLOURS = ['#000080', '#008000', '#000000'];
+const COLOURS = {
+  Green: '#008000',
+  Blue: '#000080',
+  'Black Diamond': '#000000',
+};
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
@@ -73,12 +84,10 @@ export default function SkiRunDifficultyPieChart({ incidents }) {
             labelLine={false}
           >
             {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLOURS[index % COLOURS.length]}
-              />
+              <Cell key={`cell-${index}`} fill={COLOURS[entry.name]} />
             ))}
           </Pie>
+          <Legend layout="vertical" align="right" verticalAlign="middle" />
           <Tooltip />
         </PieChart>
       </ResponsiveContainer>
