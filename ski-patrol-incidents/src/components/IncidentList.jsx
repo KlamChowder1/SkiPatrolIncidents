@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Card, CardContent, Typography, Divider } from '@mui/material';
+import {
+  Grid,
+  Card,
+  CardContent,
+  Typography,
+  Divider,
+  CircularProgress,
+} from '@mui/material';
+import { useIncidents } from '../hooks/useIncident';
 
 const IncidentList = () => {
+  const { incidents, loading, error } = useIncidents();
+
   const [groupedIncidents, setGroupedIncidents] = useState({});
 
   const formatDate = (dateString) => {
@@ -11,11 +21,8 @@ const IncidentList = () => {
 
   useEffect(() => {
     const fetchIncidents = async () => {
-      const response = await fetch('/api/incidents');
-      const json = await response.json();
-
-      if (response.ok) {
-        const sortedIncidents = json.sort(
+      if (incidents.length > 0) {
+        const sortedIncidents = incidents.sort(
           (a, b) => new Date(b.datetime) - new Date(a.datetime)
         );
 
@@ -32,9 +39,14 @@ const IncidentList = () => {
     };
 
     fetchIncidents();
-  }, []);
+  }, [incidents]);
 
-  return (
+  // can use skeletons too but loading is simpler for now
+  return loading ? (
+    <Grid container justifyContent="center" style={{ padding: '20px' }}>
+      <CircularProgress />
+    </Grid>
+  ) : (
     <Grid container spacing={2} style={{ padding: '20px' }}>
       {Object.keys(groupedIncidents).map((date) => (
         <>
