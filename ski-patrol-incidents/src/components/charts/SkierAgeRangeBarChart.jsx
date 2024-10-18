@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 import {
   BarChart,
   Bar,
@@ -41,12 +41,15 @@ export default function SkierAgeRangeBarChart({ incidents }) {
   });
 
   return (
-    <>
+    <Box sx={{ boxShadow: 2, p: 2 }}>
       <Typography variant="h6" align="center" gutterBottom>
         Incidents by Age Group
       </Typography>
       <ResponsiveContainer width="100%" height={400}>
-        <BarChart data={ageCounts}>
+        <BarChart
+          data={ageCounts}
+          margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+        >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="name"
@@ -58,11 +61,10 @@ export default function SkierAgeRangeBarChart({ incidents }) {
               angle: -90,
             }}
           />
-          <Legend wrapperStyle={{ position: 'relative' }} />
           <Tooltip />
           <Bar dataKey="count" fill="#8884d8" />
         </BarChart>
       </ResponsiveContainer>
-    </>
+    </Box>
   );
 }

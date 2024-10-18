@@ -23,15 +23,15 @@ export default function IncidentCharts() {
       <CircularProgress />
     </Grid>
   ) : (
-    <Container maxWidth="xl" sx={{ paddingTop: 8 }}>
+    <Container maxWidth="xl" sx={{ px: 2 }}>
       <Grid container spacing={2} alignItems="center" justifyContent="center">
-        <Grid item sm={12} md={6} lg={4}>
+        <Grid item sm={12} md={6} lg={6}>
           <IncidentTimeLineChart incidents={incidents} />
         </Grid>
-        <Grid item sm={12} md={6} lg={4}>
+        <Grid item sm={12} md={6} lg={6}>
           <SkiRunDifficultyPieChart incidents={incidents} />
         </Grid>
-        <Grid item sm={12} md={6} lg={4}>
+        <Grid item sm={12} md={6} lg={6}>
           <SkierAgeRangeBarChart incidents={incidents} />
         </Grid>
       </Grid>

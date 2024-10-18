@@ -6,6 +6,7 @@ import {
   Typography,
   Divider,
   CircularProgress,
+  Box,
 } from '@mui/material';
 import { useIncidents } from '../hooks/useIncident';
 import { useSnackbar } from '../hooks/useSnackbar';
@@ -65,24 +66,20 @@ const IncidentList = () => {
           </Grid>
           {groupedIncidents[date].map((incident, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card variant="outlined">
-                <CardContent>
-                  <Typography variant="h6" component="div">
-                    {new Date(incident.datetime).toLocaleTimeString([], {
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })}{' '}
-                    - {incident.type_of_incident}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Ski Run: {incident.ski_run.name} (
-                    {incident.ski_run.difficulty})
-                  </Typography>
-                  <Typography variant="body2">
-                    {incident.description}
-                  </Typography>
-                </CardContent>
-              </Card>
+              <Box sx={{ boxShadow: 2, p: 2 }}>
+                <Typography variant="h6" component="div">
+                  {new Date(incident.datetime).toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })}{' '}
+                  - {incident.type_of_incident}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Ski Run: {incident.ski_run.name} (
+                  {incident.ski_run.difficulty})
+                </Typography>
+                <Typography variant="body2">{incident.description}</Typography>
+              </Box>
             </Grid>
           ))}
         </>

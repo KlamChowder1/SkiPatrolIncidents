@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 import {
   PieChart,
   Pie,
@@ -67,7 +67,7 @@ export default function SkiRunDifficultyPieChart({ incidents }) {
   console.log(data);
 
   return (
-    <>
+    <Box sx={{ boxShadow: 2, p: 2 }}>
       <Typography variant="h6" align="center" gutterBottom>
         Incidents by Ski Run Difficulty
       </Typography>
@@ -82,6 +82,7 @@ export default function SkiRunDifficultyPieChart({ incidents }) {
             outerRadius={150}
             label={renderCustomizedLabel}
             labelLine={false}
+            margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
           >
             {data.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLOURS[entry.name]} />
@@ -91,6 +92,6 @@ export default function SkiRunDifficultyPieChart({ incidents }) {
           <Tooltip />
         </PieChart>
       </ResponsiveContainer>
-    </>
+    </Box>
   );
 }

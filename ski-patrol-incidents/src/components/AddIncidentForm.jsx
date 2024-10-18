@@ -89,93 +89,100 @@ export default function AddIncidentForm() {
 
   return (
     <Container maxWidth="md">
-      <Box sx={{ mt: 5 }}>
-        <Typography variant="h4" gutterBottom>
+      <Box sx={{ mt: 4, boxShadow: 2 }}>
+        <Typography
+          variant="h4"
+          gutterBottom
+          sx={{ pt: 4, textAlign: 'center' }}
+        >
           Add Ski Incident
         </Typography>
         {/* TODO: should try out useForm() hook */}
         <form onSubmit={handleSubmit}>
-          <FormControl fullWidth>
-            <TextField
-              label="Date"
-              type="datetime-local"
-              name="datetime"
-              value={formData.datetime}
-              onChange={handleChange}
-              fullWidth
-              InputLabelProps={{ shrink: true }}
-              required
-            />
-            <TextField
-              label="Type of Incident"
-              name="type_of_incident"
-              value={formData.type_of_incident}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-              required
-            />
-            <TextField
-              label="Location (Ski Run Name)"
-              name="ski_run_name"
-              value={formData.ski_run.name}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-              required
-            />
-            <TextField
-              label="Ski Run Difficulty"
-              name="ski_run_difficulty"
-              value={formData.ski_run.difficulty}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-              required
-              select
-            >
-              <MenuItem value="Green">Green</MenuItem>
-              <MenuItem value="Blue">Blue</MenuItem>
-              <MenuItem value="Black Diamond">Black Diamond</MenuItem>
-            </TextField>
-            <TextField
-              label="Skier Age"
-              name="skier_age"
-              type="number"
-              value={formData.skier_age}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-              required
-              InputProps={{
-                inputProps: {
-                  min: 0,
-                  max: 100,
-                },
-              }}
-            />
-            <TextField
-              label="Description"
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-              multiline
-              rows={4}
-              required
-            />
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              sx={{ mt: 2 }}
-              fullWidth
-              disabled={!isFormValid()}
-            >
-              Submit Incident
-            </Button>
-          </FormControl>
+          <Box sx={{ p: 3 }}>
+            <FormControl fullWidth>
+              <TextField
+                label="Date"
+                type="datetime-local"
+                name="datetime"
+                value={formData.datetime}
+                onChange={handleChange}
+                fullWidth
+                InputLabelProps={{ shrink: true }}
+                required
+              />
+              <TextField
+                label="Type of Incident"
+                name="type_of_incident"
+                value={formData.type_of_incident}
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                required
+              />
+              <TextField
+                label="Location (Ski Run Name)"
+                name="ski_run_name"
+                value={formData.ski_run.name}
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                required
+              />
+              <TextField
+                label="Ski Run Difficulty"
+                name="ski_run_difficulty"
+                value={formData.ski_run.difficulty}
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                required
+                select
+              >
+                <MenuItem value="Green">Green</MenuItem>
+                <MenuItem value="Blue">Blue</MenuItem>
+                <MenuItem value="Black Diamond">Black Diamond</MenuItem>
+              </TextField>
+              <TextField
+                label="Skier Age"
+                name="skier_age"
+                type="number"
+                value={formData.skier_age}
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                required
+                InputProps={{
+                  inputProps: {
+                    min: 0,
+                    max: 100,
+                  },
+                }}
+              />
+              <TextField
+                label="Description"
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                multiline
+                rows={4}
+                required
+              />
+              <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  sx={{ mt: 2 }}
+                  disabled={!isFormValid()}
+                >
+                  Submit Incident
+                </Button>
+              </Box>
+            </FormControl>
+          </Box>
         </form>
       </Box>
     </Container>

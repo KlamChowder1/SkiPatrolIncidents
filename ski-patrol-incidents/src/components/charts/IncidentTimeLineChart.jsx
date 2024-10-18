@@ -1,9 +1,8 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 import {
   LineChart,
   Line,
-  Label,
   XAxis,
   YAxis,
   Tooltip,
@@ -32,7 +31,7 @@ const IncidentOverTimeLineChart = ({ incidents }) => {
     .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   return (
-    <>
+    <Box sx={{ boxShadow: 2, p: 2 }}>
       <Typography variant="h6" align="center" gutterBottom>
         Incidents over Time
       </Typography>
@@ -53,7 +52,7 @@ const IncidentOverTimeLineChart = ({ incidents }) => {
           <Line type="monotone" dataKey="count" stroke="#8884d8" label="test" />
         </LineChart>
       </ResponsiveContainer>
-    </>
+    </Box>
   );
 };
 
