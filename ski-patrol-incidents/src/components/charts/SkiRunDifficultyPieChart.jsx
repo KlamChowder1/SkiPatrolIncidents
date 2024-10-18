@@ -67,7 +67,7 @@ export default function SkiRunDifficultyPieChart({ incidents }) {
   console.log(data);
 
   return (
-    <Box sx={{ boxShadow: 2, p: 2 }}>
+    <Box sx={{ boxShadow: 2, p: 2, borderRadius: 2 }}>
       <Typography variant="h6" align="center" gutterBottom>
         Incidents by Ski Run Difficulty
       </Typography>

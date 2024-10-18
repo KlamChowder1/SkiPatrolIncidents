@@ -64,7 +64,7 @@ const IncidentList = () => {
           </Grid>
           {groupedIncidents[date].map((incident, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
-              <Box sx={{ boxShadow: 2, p: 2 }}>
+              <Box sx={{ boxShadow: 2, p: 2, borderRadius: 2 }}>
                 <Typography variant="h6" component="div">
                   {new Date(incident.datetime).toLocaleTimeString([], {
                     hour: '2-digit',

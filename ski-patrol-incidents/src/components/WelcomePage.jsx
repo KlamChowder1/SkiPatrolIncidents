@@ -6,7 +6,7 @@ import cypressMap2 from '../assets/cypressMap2.png';
 export default function WelcomePage() {
   return (
     <Container>
-      <Box sx={{ boxShadow: 2, textAlign: 'center', mt: 4, padding: 2 }}>
+      <Box sx={{ boxShadow: 2, textAlign: 'center', p: 2, borderRadius: 2 }}>
         <Typography variant="h2" gutterBottom>
           Welcome to Cypress Mountain Ski Patrol Incident Database
         </Typography>

@@ -31,7 +31,7 @@ const IncidentOverTimeLineChart = ({ incidents }) => {
     .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   return (
-    <Box sx={{ boxShadow: 2, p: 2 }}>
+    <Box sx={{ boxShadow: 2, p: 2, borderRadius: 2 }}>
       <Typography variant="h6" align="center" gutterBottom>
         Incidents over Time
       </Typography>

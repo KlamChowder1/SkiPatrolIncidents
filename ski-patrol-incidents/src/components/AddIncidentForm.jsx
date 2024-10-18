@@ -89,7 +89,7 @@ export default function AddIncidentForm() {
 
   return (
     <Container maxWidth="md">
-      <Box sx={{ mt: 4, boxShadow: 2 }}>
+      <Box sx={{ boxShadow: 2, p: 2, borderRadius: 2 }}>
         <Typography
           variant="h4"
           gutterBottom
