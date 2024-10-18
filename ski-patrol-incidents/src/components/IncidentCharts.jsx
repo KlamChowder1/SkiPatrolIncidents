@@ -1,23 +1,38 @@
-import React from 'react';
-import { Grid, Container } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Grid, CircularProgress, Container } from '@mui/material';
 import {
   SkiRunDifficultyPieChart,
   SkierAgeRangeBarChart,
   IncidentTimeLineChart,
 } from './charts';
+import { useIncident } from '../hooks/useIncident';
+import { useSnackbar } from '../hooks/useSnackbar';
 
 export default function IncidentCharts() {
-  return (
-    <Container maxWidth="xl" sx={{ paddingTop: 8 }}>
+  const { showSnackbar } = useSnackbar();
+  const { incidents, loading, error } = useIncident();
+
+  useEffect(() => {
+    if (error) {
+      showSnackbar(error, 'Could not load incidents');
+    }
+  }, [error, showSnackbar]);
+
+  return loading ? (
+    <Grid container justifyContent="center" alignItems="center">
+      <CircularProgress />
+    </Grid>
+  ) : (
+    <Container maxWidth="xl" sx={{ px: 2 }}>
       <Grid container spacing={2} alignItems="center" justifyContent="center">
-        <Grid item sm={12} md={6} lg={4}>
-          <IncidentTimeLineChart />
+        <Grid item sm={12} md={6} lg={6}>
+          <IncidentTimeLineChart incidents={incidents} />
         </Grid>
-        <Grid item sm={12} md={6} lg={4}>
-          <SkiRunDifficultyPieChart />
+        <Grid item sm={12} md={6} lg={6}>
+          <SkiRunDifficultyPieChart incidents={incidents} />
         </Grid>
-        <Grid item sm={12} md={6} lg={4}>
-          <SkierAgeRangeBarChart />
+        <Grid item sm={12} md={6} lg={6}>
+          <SkierAgeRangeBarChart incidents={incidents} />
         </Grid>
       </Grid>
     </Container>

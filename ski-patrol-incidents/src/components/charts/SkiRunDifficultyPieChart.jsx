@@ -1,9 +1,19 @@
 import React from 'react';
-import { Typography } from '@mui/material';
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
-import sampleIncidents from '../sampleIncidents.json';
+import { Typography, Box } from '@mui/material';
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  ResponsiveContainer,
+  Legend,
+} from 'recharts';
 
-const COLOURS = ['#000080', '#008000', '#000000'];
+const COLOURS = {
+  Green: '#008000',
+  Blue: '#000080',
+  'Black Diamond': '#000000',
+};
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
@@ -32,7 +42,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-export default function SkiRunDifficultyPieChart() {
+export default function SkiRunDifficultyPieChart({ incidents }) {
   // pie chart data looks like this: https://recharts.org/en-US/examples/PieChartWithCustomizedLabel
   // const data = [
   //     { name: 'Group A', value: 400 },
@@ -41,23 +51,19 @@ export default function SkiRunDifficultyPieChart() {
   //     { name: 'Group D', value: 200 },
   //   ];
 
-  const difficultyCounts = sampleIncidents.incidents.reduce((acc, incident) => {
-    acc[incident.ski_run_difficulty] =
-      (acc[incident.ski_run_difficulty] || 0) + 1;
+  const difficultyCounts = incidents.reduce((acc, incident) => {
+    const difficulty = incident.ski_run.difficulty; // Updated to use difficulty
+    acc[difficulty] = (acc[difficulty] || 0) + 1; // Count incidents per difficulty
     return acc;
   }, {});
-
-  console.log(difficultyCounts);
 
   const data = Object.keys(difficultyCounts).map((difficulty) => ({
     name: difficulty,
     value: difficultyCounts[difficulty],
   }));
 
-  console.log(data);
-
   return (
-    <>
+    <Box sx={{ boxShadow: 2, p: 2, borderRadius: 2 }}>
       <Typography variant="h6" align="center" gutterBottom>
         Incidents by Ski Run Difficulty
       </Typography>
@@ -72,17 +78,16 @@ export default function SkiRunDifficultyPieChart() {
             outerRadius={150}
             label={renderCustomizedLabel}
             labelLine={false}
+            margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
           >
             {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLOURS[index % COLOURS.length]}
-              />
+              <Cell key={`cell-${index}`} fill={COLOURS[entry.name]} />
             ))}
           </Pie>
+          <Legend layout="vertical" align="right" verticalAlign="middle" />
           <Tooltip />
         </PieChart>
       </ResponsiveContainer>
-    </>
+    </Box>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 import {
   BarChart,
   Bar,
@@ -7,10 +7,8 @@ import {
   YAxis,
   Tooltip,
   CartesianGrid,
-  Legend,
   ResponsiveContainer,
 } from 'recharts';
-import sampleIncidents from '../sampleIncidents.json';
 
 const ageRanges = [
   { name: '0-18', min: 0, max: 18 },
@@ -22,13 +20,13 @@ const ageRanges = [
   { name: '65+', min: 65, max: 100 },
 ];
 
-export default function SkierAgeRangeBarChart() {
+export default function SkierAgeRangeBarChart({ incidents }) {
   const ageCounts = ageRanges.map((range) => ({
     name: range.name,
     count: 0,
   }));
 
-  sampleIncidents.incidents.forEach((incident) => {
+  incidents.forEach((incident) => {
     const age = incident.skier_age;
     // have to find the age that fits in the age range
     const range = ageRanges.find((r) => age >= r.min && age <= r.max);
@@ -42,20 +40,30 @@ export default function SkierAgeRangeBarChart() {
   });
 
   return (
-    <>
+    <Box sx={{ boxShadow: 2, p: 2, borderRadius: 2 }}>
       <Typography variant="h6" align="center" gutterBottom>
         Incidents by Age Group
       </Typography>
       <ResponsiveContainer width="100%" height={400}>
-        <BarChart data={ageCounts}>
+        <BarChart
+          data={ageCounts}
+          margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+        >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
+          <XAxis
+            dataKey="name"
+            label={{ value: 'Age Range (years)', position: 'bottom' }}
+          />
+          <YAxis
+            label={{
+              value: 'Number of Incidents (count)',
+              angle: -90,
+            }}
+          />
           <Tooltip />
-          <Legend />
           <Bar dataKey="count" fill="#8884d8" />
         </BarChart>
       </ResponsiveContainer>
-    </>
+    </Box>
   );
 }
