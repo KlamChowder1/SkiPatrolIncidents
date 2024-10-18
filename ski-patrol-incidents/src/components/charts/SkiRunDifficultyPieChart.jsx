@@ -1,7 +1,6 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
-import sampleIncidents from '../sampleIncidents.json';
 
 const COLOURS = ['#000080', '#008000', '#000000'];
 
@@ -32,7 +31,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-export default function SkiRunDifficultyPieChart() {
+export default function SkiRunDifficultyPieChart({ incidents }) {
   // pie chart data looks like this: https://recharts.org/en-US/examples/PieChartWithCustomizedLabel
   // const data = [
   //     { name: 'Group A', value: 400 },
@@ -41,9 +40,9 @@ export default function SkiRunDifficultyPieChart() {
   //     { name: 'Group D', value: 200 },
   //   ];
 
-  const difficultyCounts = sampleIncidents.incidents.reduce((acc, incident) => {
-    acc[incident.ski_run_difficulty] =
-      (acc[incident.ski_run_difficulty] || 0) + 1;
+  const difficultyCounts = incidents.reduce((acc, incident) => {
+    const difficulty = incident.ski_run.difficulty; // Updated to use difficulty
+    acc[difficulty] = (acc[difficulty] || 0) + 1; // Count incidents per difficulty
     return acc;
   }, {});
 

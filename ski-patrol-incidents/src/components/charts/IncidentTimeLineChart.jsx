@@ -10,17 +10,18 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from 'recharts';
-import sampleIncidents from '../sampleIncidents.json';
 import { format } from 'date-fns';
 
-const IncidentOverTimeLineChart = () => {
-  const incidentsByDate = sampleIncidents.incidents.reduce((acc, incident) => {
+const IncidentOverTimeLineChart = ({ incidents }) => {
+  console.log(incidents);
+
+  const incidentsByDate = incidents.reduce((acc, incident) => {
     const date = format(new Date(incident.datetime), 'yyyy-MM-dd');
     acc[date] = (acc[date] || 0) + 1;
     return acc;
   }, {});
 
-  console.log(incidentsByDate);
+  // console.log(incidentsByDate);
 
   const chartData = Object.keys(incidentsByDate).map((date) => ({
     date,

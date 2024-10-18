@@ -10,7 +10,6 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
-import sampleIncidents from '../sampleIncidents.json';
 
 const ageRanges = [
   { name: '0-18', min: 0, max: 18 },
@@ -22,13 +21,13 @@ const ageRanges = [
   { name: '65+', min: 65, max: 100 },
 ];
 
-export default function SkierAgeRangeBarChart() {
+export default function SkierAgeRangeBarChart({ incidents }) {
   const ageCounts = ageRanges.map((range) => ({
     name: range.name,
     count: 0,
   }));
 
-  sampleIncidents.incidents.forEach((incident) => {
+  incidents.forEach((incident) => {
     const age = incident.skier_age;
     // have to find the age that fits in the age range
     const range = ageRanges.find((r) => age >= r.min && age <= r.max);
