@@ -14,9 +14,16 @@ function App() {
         <Router>
           <AppBar position="static">
             <Toolbar>
-              <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                Ski Patrol Incident Reports
-              </Typography>
+              <Box sx={{ flexGrow: 1 }}>
+                <Typography
+                  variant="h6"
+                  component={Link}
+                  to="/"
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                >
+                  Ski Patrol Incident Reports
+                </Typography>
+              </Box>
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <Button color="inherit" component={Link} to="/add-incident">
                   Add Incident

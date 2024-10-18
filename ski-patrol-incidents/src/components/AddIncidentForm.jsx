@@ -9,10 +9,10 @@ import {
   FormControl,
 } from '@mui/material';
 import { useSnackbar } from '../hooks/useSnackbar';
-import { useIncidents } from '../hooks/useIncident';
+import { useIncident } from '../hooks/useIncident';
 
 export default function AddIncidentForm() {
-  const { fetchIncidents } = useIncidents();
+  const { fetchIncidents } = useIncident();
 
   // TODO:check if I should camelCase or snake_case this
   const [formData, setFormData] = useState({

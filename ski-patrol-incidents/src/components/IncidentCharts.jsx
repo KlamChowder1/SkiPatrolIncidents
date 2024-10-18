@@ -5,12 +5,12 @@ import {
   SkierAgeRangeBarChart,
   IncidentTimeLineChart,
 } from './charts';
-import { useIncidents } from '../hooks/useIncident';
+import { useIncident } from '../hooks/useIncident';
 import { useSnackbar } from '../hooks/useSnackbar';
 
 export default function IncidentCharts() {
   const { showSnackbar } = useSnackbar();
-  const { incidents, loading, error } = useIncidents();
+  const { incidents, loading, error } = useIncident();
 
   useEffect(() => {
     if (error) {

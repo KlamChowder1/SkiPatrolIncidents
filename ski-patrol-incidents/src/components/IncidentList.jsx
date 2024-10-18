@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import {
   Grid,
-  Card,
-  CardContent,
   Typography,
   Divider,
   CircularProgress,
   Box,
 } from '@mui/material';
-import { useIncidents } from '../hooks/useIncident';
+import { useIncident } from '../hooks/useIncident';
 import { useSnackbar } from '../hooks/useSnackbar';
 
 const IncidentList = () => {
-  const { incidents, loading, error } = useIncidents();
+  const { incidents, loading, error } = useIncident();
   const { showSnackbar } = useSnackbar();
 
   const [groupedIncidents, setGroupedIncidents] = useState({});
