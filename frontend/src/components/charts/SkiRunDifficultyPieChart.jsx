@@ -75,7 +75,7 @@ export default function SkiRunDifficultyPieChart({ incidents }) {
             nameKey="name"
             cx="50%"
             cy="50%"
-            outerRadius={150}
+            outerRadius="80%"
             label={renderCustomizedLabel}
             labelLine={false}
             margin={{ top: 20, right: 30, left: 20, bottom: 20 }}

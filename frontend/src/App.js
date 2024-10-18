@@ -14,12 +14,13 @@ function App() {
       <IncidentProvider>
         <Router>
           <AppBar position="static">
+            {/* Need to make this mobile friendly and responsive */}
             <Toolbar>
               <Box sx={{ flexGrow: 1 }}>
                 <Typography
                   variant="h6"
                   component={Link}
-                  to="/home"
+                  to="/"
                   style={{ textDecoration: 'none', color: 'inherit' }}
                 >
                   Ski Patrol Incident Reports
@@ -41,7 +42,7 @@ function App() {
 
           <Box sx={{ mt: 2 }}>
             <Routes>
-              <Route path="/home" element={<WelcomePage />} />
+              <Route path="/" element={<WelcomePage />} />
               <Route path="/add-incident" element={<AddIncidentForm />} />
               <Route path="/incidents" element={<IncidentList />} />
               <Route path="/charts" element={<IncidentCharts />} />
