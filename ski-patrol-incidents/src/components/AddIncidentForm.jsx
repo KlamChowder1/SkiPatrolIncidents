@@ -5,11 +5,10 @@ import {
   Button,
   Typography,
   Box,
-  Alert,
-  Snackbar,
   MenuItem,
   FormControl,
 } from '@mui/material';
+import { useSnackbar } from '../hooks/useSnackbar';
 
 export default function AddIncidentForm() {
   // TODO:check if I should camelCase or snake_case this
@@ -23,7 +22,7 @@ export default function AddIncidentForm() {
     skier_age: '',
     description: '',
   });
-  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const { showSnackbar } = useSnackbar();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -64,13 +63,24 @@ export default function AddIncidentForm() {
           skier_age: '',
           description: '',
         });
-        setOpenSnackbar(true);
+        showSnackbar('Incident submitted successfully!', 'success');
       } else {
-        console.error('ERROR');
+        showSnackbar('Failed to submit the incident!', 'error');
       }
     } catch (e) {
-      console.log(e);
+      showSnackbar('Failed to submit the incident!', 'error');
     }
+  };
+
+  const isFormValid = () => {
+    return (
+      formData.datetime &&
+      formData.type_of_incident &&
+      formData.ski_run.name &&
+      formData.ski_run.difficulty &&
+      formData.skier_age &&
+      formData.description
+    );
   };
 
   return (
@@ -79,92 +89,84 @@ export default function AddIncidentForm() {
         <Typography variant="h4" gutterBottom>
           Add Ski Incident
         </Typography>
-        <FormControl fullWidth>
-          <TextField
-            label="Date"
-            type="datetime-local"
-            name="datetime"
-            value={formData.datetime}
-            onChange={handleChange}
-            fullWidth
-            InputLabelProps={{ shrink: true }}
-            required
-          />
-          <TextField
-            label="Type of Incident"
-            name="type_of_incident"
-            value={formData.type_of_incident}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            required
-          />
-          <TextField
-            label="Location (Ski Run Name)"
-            name="ski_run_name"
-            value={formData.ski_run.name}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            required
-          />
-          <TextField
-            label="Ski Run Difficulty"
-            name="ski_run_difficulty"
-            value={formData.ski_run.difficulty}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            required
-            select
-          >
-            <MenuItem value="Green">Green</MenuItem>
-            <MenuItem value="Blue">Blue</MenuItem>
-            <MenuItem value="Black Diamond">Black Diamond</MenuItem>
-          </TextField>
-          <TextField
-            label="Skier Age"
-            name="skier_age"
-            type="number"
-            value={formData.skier_age}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            required
-          />
-          <TextField
-            label="Description"
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            multiline
-            rows={4}
-            required
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            sx={{ mt: 2 }}
-            fullWidth
-            onClick={handleSubmit}
-          >
-            Submit Incident
-          </Button>
-        </FormControl>
+        <form onSubmit={handleSubmit}>
+          <FormControl fullWidth>
+            <TextField
+              label="Date"
+              type="datetime-local"
+              name="datetime"
+              value={formData.datetime}
+              onChange={handleChange}
+              fullWidth
+              InputLabelProps={{ shrink: true }}
+              required
+            />
+            <TextField
+              label="Type of Incident"
+              name="type_of_incident"
+              value={formData.type_of_incident}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              required
+            />
+            <TextField
+              label="Location (Ski Run Name)"
+              name="ski_run_name"
+              value={formData.ski_run.name}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              required
+            />
+            <TextField
+              label="Ski Run Difficulty"
+              name="ski_run_difficulty"
+              value={formData.ski_run.difficulty}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              required
+              select
+            >
+              <MenuItem value="Green">Green</MenuItem>
+              <MenuItem value="Blue">Blue</MenuItem>
+              <MenuItem value="Black Diamond">Black Diamond</MenuItem>
+            </TextField>
+            <TextField
+              label="Skier Age"
+              name="skier_age"
+              type="number"
+              value={formData.skier_age}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              required
+            />
+            <TextField
+              label="Description"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              multiline
+              rows={4}
+              required
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              sx={{ mt: 2 }}
+              fullWidth
+              disabled={!isFormValid()}
+            >
+              Submit Incident
+            </Button>
+          </FormControl>
+        </form>
       </Box>
-      <Snackbar
-        open={openSnackbar}
-        autoHideDuration={2000}
-        onClose={() => setOpenSnackbar(false)}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-      >
-        <Alert severity="success" sx={{ width: '100%' }}>
-          Incident Submitted Successfully!
-        </Alert>
-      </Snackbar>
     </Container>
   );
 }
