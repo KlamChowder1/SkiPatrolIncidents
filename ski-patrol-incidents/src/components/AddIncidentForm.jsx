@@ -9,8 +9,11 @@ import {
   FormControl,
 } from '@mui/material';
 import { useSnackbar } from '../hooks/useSnackbar';
+import { useIncidents } from '../hooks/useIncident';
 
 export default function AddIncidentForm() {
+  const { fetchIncidents } = useIncidents();
+
   // TODO:check if I should camelCase or snake_case this
   const [formData, setFormData] = useState({
     datetime: '',
@@ -53,6 +56,7 @@ export default function AddIncidentForm() {
       });
       if (response.ok) {
         console.log('POSTED OKAY');
+        fetchIncidents();
         setFormData({
           datetime: '',
           type_of_incident: '',
