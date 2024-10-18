@@ -55,7 +55,6 @@ export default function AddIncidentForm() {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
-        console.log('POSTED OKAY');
         fetchIncidents();
         setFormData({
           datetime: '',

@@ -57,14 +57,10 @@ export default function SkiRunDifficultyPieChart({ incidents }) {
     return acc;
   }, {});
 
-  console.log(difficultyCounts);
-
   const data = Object.keys(difficultyCounts).map((difficulty) => ({
     name: difficulty,
     value: difficultyCounts[difficulty],
   }));
-
-  console.log(data);
 
   return (
     <Box sx={{ boxShadow: 2, p: 2, borderRadius: 2 }}>

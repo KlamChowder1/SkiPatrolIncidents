@@ -52,11 +52,11 @@ export default function SkierAgeRangeBarChart({ incidents }) {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="name"
-            label={{ value: 'Age Range', position: 'bottom' }}
+            label={{ value: 'Age Range (years)', position: 'bottom' }}
           />
           <YAxis
             label={{
-              value: '# of Incidents',
+              value: 'Number of Incidents (count)',
               angle: -90,
             }}
           />

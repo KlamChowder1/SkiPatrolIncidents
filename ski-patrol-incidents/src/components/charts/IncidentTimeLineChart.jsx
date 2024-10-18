@@ -12,15 +12,11 @@ import {
 import { format } from 'date-fns';
 
 const IncidentOverTimeLineChart = ({ incidents }) => {
-  console.log(incidents);
-
   const incidentsByDate = incidents.reduce((acc, incident) => {
     const date = format(new Date(incident.datetime), 'yyyy-MM-dd');
     acc[date] = (acc[date] || 0) + 1;
     return acc;
   }, {});
-
-  // console.log(incidentsByDate);
 
   // need to sort the chartData by date otherwise the x axis gets messed up
   const chartData = Object.keys(incidentsByDate)
@@ -41,10 +37,13 @@ const IncidentOverTimeLineChart = ({ incidents }) => {
           margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" label={{ value: 'Date', position: 'bottom' }} />
+          <XAxis
+            dataKey="date"
+            label={{ value: 'Date (yyyy/mm/dd)', position: 'bottom' }}
+          />
           <YAxis
             label={{
-              value: '# of Incidents',
+              value: 'Number of Incidents (count)',
               angle: -90,
             }}
           />

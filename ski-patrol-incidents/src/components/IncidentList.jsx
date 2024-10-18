@@ -9,7 +9,7 @@ import {
 import { useIncident } from '../hooks/useIncident';
 import { useSnackbar } from '../hooks/useSnackbar';
 
-const IncidentList = () => {
+export default function IncidentList() {
   const { incidents, loading, error } = useIncident();
   const { showSnackbar } = useSnackbar();
 
@@ -55,9 +55,9 @@ const IncidentList = () => {
     </Grid>
   ) : (
     <Grid container spacing={2} style={{ padding: '20px' }}>
-      {Object.keys(groupedIncidents).map((date) => (
+      {Object.keys(groupedIncidents).map((date, index) => (
         <>
-          <Grid item xs={12}>
+          <Grid item xs={12} key={index}>
             <Divider sx={{ mx: 2 }}>
               <Typography variant="h6">{date}</Typography>
             </Divider>
@@ -84,6 +84,4 @@ const IncidentList = () => {
       ))}
     </Grid>
   );
-};
-
-export default IncidentList;
+}
